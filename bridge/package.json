@@ -1,0 +1,31 @@
+{
+  "name": "matrix-nfc-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bridge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bridge.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swimos/matrixLabsNfcDemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swimos/matrixLabsNfcDemo/issues"
+  },
+  "homepage": "https://github.com/swimos/matrixLabsNfcDemo#readme",
+  "dependencies": {
+    "@matrix-io/matrix-lite": "^0.4.6",
+    "@matrix-io/matrix-lite-nfc": "0.0.2",
+    "@swim/client": "3.10.1",
+    "@swim/core": "3.10.1",
+    "@swim/ui": "3.10.1",
+    "@swim/ux": "3.10.1",
+    "matrix-protos": "0.0.28",
+    "ndef": "^0.2.0",
+    "zeromq": "^5.1.1"
+  }
+}
