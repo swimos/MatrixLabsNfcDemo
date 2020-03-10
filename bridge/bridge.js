@@ -25,8 +25,8 @@ class Main {
         this.nfcOptions = {
             rate: 50,    // Read loop speed (Milliseconds)
             // All these options enabled will slow reading speeds
-            info: true,  // Generic information for any NFC tag
-            pages: true, // All page data
+            info: false,  // Generic information for any NFC tag
+            pages: false, // All page data
             page: 0,     // A single page(faster than pages)
             ndef: true   // All NDEF data
         }

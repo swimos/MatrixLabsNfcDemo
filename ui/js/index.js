@@ -15,7 +15,11 @@ class NfcDemoScreen {
             .laneUri("code")
             .didSet((newValue, oldValue) => {
                 // console.info('code', newValue);
-                document.getElementById("nfcCode").innerHTML = newValue.stringValue();
+                if(newValue.isDefined()) {
+                    document.getElementById("nfcCode").innerHTML = newValue.stringValue();
+                } else {
+                    document.getElementById("nfcCode").innerHTML = "No Tags Scanned";
+                }
             });        
 
         this.links['rawTagData'] = swim.downlinkValue()
@@ -23,11 +27,14 @@ class NfcDemoScreen {
             .nodeUri(`/nfc`)
             .laneUri("rawTagData")
             .didSet((newValue, oldValue) => {
-                // console.info('rawTagData', newValue.toAny());
-                const tagInfo = newValue.get("info");
-                document.getElementById("rawData").innerText = newValue;
-                document.getElementById("nfcType").innerText = tagInfo.get("type").stringValue("");
-                document.getElementById("nfcReadStatus").innerText = tagInfo.get("read_status").stringValue("0");
+                // console.info(newValue.isDefined());
+                if(newValue.isDefined()) {
+                    // console.info('rawTagData', newValue.toObject());
+                    const tagInfo = newValue.get("info");
+                    document.getElementById("rawData").innerText = JSON.stringify(newValue.toObject());
+                    document.getElementById("nfcType").innerText = tagInfo.get("type").stringValue("");
+                    document.getElementById("nfcReadStatus").innerText = tagInfo.get("read_status").stringValue("0");
+                }
             });        
 
         this.links['payload'] = swim.downlinkValue()
@@ -36,7 +43,9 @@ class NfcDemoScreen {
             .laneUri("payload")
             .didSet((newValue, oldValue) => {
                 // console.info('payload', newValue);
-                document.getElementById("nfcPayload").innerHTML = newValue.flattened();
+                if(newValue.isDefined()) {
+                    document.getElementById("nfcPayload").innerHTML = newValue;
+                }
             });        
 
         this.links['history'] = swim.downlinkMap()

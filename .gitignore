@@ -4,7 +4,7 @@
 .gradle
 .vscode
 server/build
-.out
-.log
-.err
+*.out
+*.log
+*.err
 bridge/node_modules
